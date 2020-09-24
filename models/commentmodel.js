@@ -13,8 +13,8 @@ class Comment extends Model{
                 Relation : Model.HasManyRelation,
                 modelClass : post,
                 join : {
-                    from : Comment.id,
-                    to :  post.id
+                    from : Comments.id,
+                    to :  Posts.id
                 } 
             }
         }

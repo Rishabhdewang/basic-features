@@ -1,8 +1,6 @@
 const {
     Model
 } = require('objection');
-const User = require("./usermodel")
-const Comment = require("./commentmodel");
 
 
 class Post extends Model {
@@ -12,19 +10,22 @@ class Post extends Model {
 
 
     static get relationshipMappings() {
+        
+const User = require("./usermodel")
+const Comment = require("./commentmodel");
         return {
             user: {
-                relation: Model.HasOneRelation,
+                relation: Model.HasManyRelation,
                 modelClass: User,
                 join: {
                     from: Posts.UserId,
-                    to: Users.id
+                    to: User.id
                 }
             },
 
             Comment: {
                 relation: Model.HasManyRelation,
-                modelClass: comment,
+                modelClass: Comment,
                 join: {
                     from: Posts.id,
                     to: Comments.id

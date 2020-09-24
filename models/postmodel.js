@@ -2,7 +2,7 @@ const {
     Model
 } = require('objection');
 const User = require("./usermodel")
-const comment = require("./commentmodel");
+const Comment = require("./commentmodel");
 
 
 class Post extends Model {
@@ -17,19 +17,19 @@ class Post extends Model {
                 relation: Model.HasOneRelation,
                 modelClass: User,
                 join: {
-                    from: Post.UserId,
-                    to: User.id
+                    from: Posts.UserId,
+                    to: Users.id
+                }
+            },
+
+            Comment: {
+                relation: Model.HasManyRelation,
+                modelClass: comment,
+                join: {
+                    from: Posts.id,
+                    to: Comments.id
                 }
             }
-
-            // Comment: {
-            //     relation: Model.HasManyRelation,
-            //     modelClass: comment,
-            //     join: {
-            //         from: Post.id,
-            //         to: comment.id
-            //     }
-            // }
         }
     }
 

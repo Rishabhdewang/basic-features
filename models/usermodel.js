@@ -6,20 +6,6 @@ class User extends Model {
         return "User"
     }
 
-    static get relationshipMappings(){
-        return {
-            post : {
-                Relation : Model.BelongsToOneRelation,
-                modelClass : posts,
-                join : {
-                    from : User.id,
-                    to : posts.id
-                }
-            }
-        }
-
-    }
-
 }
 
 module.exports = User;
